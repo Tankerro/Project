@@ -10,7 +10,9 @@ public class Player_controller : MonoBehaviour
     public float jumpForce = 5f;
     public bool IsGrounded = false;
     public float moveHorizontal;
-    public float moveVertical;
+    public bool faceOnRight;
+    public GameObject Bullet;
+    public GameObject BulletSpawner;
 
     void Start()
     {
@@ -19,29 +21,56 @@ public class Player_controller : MonoBehaviour
 
     void Update()
     {
-        
-        
+        //считывание нажатий 
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Vertical");
+
+        // двежение 
         if (moveHorizontal > 0.1f || moveHorizontal < 0.1f)
         {
             rb.AddForce(new Vector2(moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
         }
-
+        
+        // прыжок 
         if (Input.GetKey(KeyCode.Space) && IsGrounded == true)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             IsGrounded = false;
         }
+
+        // поворот персонажа 
+        if (moveHorizontal > 0f && faceOnRight == false)
+        {
+            transform.Rotate(0, 180, 0);
+            faceOnRight = true;
+        }
+
+        else if (moveHorizontal < 0f && faceOnRight == true)
+        {
+            transform.Rotate(0, 180, 0);
+            faceOnRight = false;
+        }
+        
+        // если левая кнопка мыши нажата, то стрелять 
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+
     }
 
     void FixedUpdate()
     {
 
     }
-
+    // считывает приземления 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IsGrounded = true;
+    }
+    
+    // стрельба
+    public void Shoot()
+    {
+        Instantiate(Bullet, BulletSpawner.transform.position, transform.rotation);
     }
 }
