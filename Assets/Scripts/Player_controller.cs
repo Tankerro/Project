@@ -6,7 +6,7 @@ public class Player_controller : MonoBehaviour
 {
     public Rigidbody2D rb;
 
-    public float moveSpeed = 5f;
+    public float moveSpeed = 60f;
     public float jumpForce = 5f;
     public bool IsGrounded = false;
     public float moveHorizontal;
@@ -29,7 +29,7 @@ public class Player_controller : MonoBehaviour
         // двежение 
         if (moveHorizontal > 0.1f || moveHorizontal < 0.1f)
         {
-            rb.AddForce(new Vector2(moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
+            rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
         }
         
         // прыжок 

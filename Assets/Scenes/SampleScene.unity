@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 60
   jumpForce: 400
   IsGrounded: 0
   moveHorizontal: 0
