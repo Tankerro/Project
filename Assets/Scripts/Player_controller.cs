@@ -58,7 +58,6 @@ public class Player_controller : MonoBehaviour
             Shoot();
         }
 
-        Camera.transform.position = transform.position + new Vector3 (0f, 16.16f, -17f);
     }
 
     void FixedUpdate()
