@@ -12,12 +12,12 @@ public class Bullet : MonoBehaviour
         PlayerRotation = GameObject.Find("Pupsik").GetComponent<Player_controller>();
         if (PlayerRotation.faceOnRight == true)
         {
-            BulletSpeed = 5f;
+            BulletSpeed = 10f;
         }
 
         else if (PlayerRotation.faceOnRight == false)
         {
-            BulletSpeed = -5f;
+            BulletSpeed = -10f;
         }
     }
 

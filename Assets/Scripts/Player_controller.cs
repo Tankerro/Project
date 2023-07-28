@@ -13,6 +13,7 @@ public class Player_controller : MonoBehaviour
     public bool faceOnRight;
     public GameObject Bullet;
     public GameObject BulletSpawner;
+    public GameObject Camera;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class Player_controller : MonoBehaviour
 
     void Update()
     {
+
         //считывание нажатий 
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
@@ -56,6 +58,7 @@ public class Player_controller : MonoBehaviour
             Shoot();
         }
 
+        Camera.transform.position = transform.position + new Vector3 (0f, 16.16f, -17f);
     }
 
     void FixedUpdate()

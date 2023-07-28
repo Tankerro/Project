@@ -403,7 +403,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8155206937553831869, guid: 8c97bb14a4811434db8b811c8c43fb59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -424,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 273670217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.42, y: 2.42, z: 0}
+  m_LocalPosition: {x: 0, y: 2.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -561,6 +561,7 @@ MonoBehaviour:
   faceOnRight: 1
   Bullet: {fileID: 6178573299327581478, guid: 11abee1b4b03368418bcfebd461fc344, type: 3}
   BulletSpawner: {fileID: 443845670}
+  Camera: {fileID: 519420028}
 --- !u!1 &295518059
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +828,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 24.051468
+  orthographic size: 29.18853
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -851,9 +852,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.9011984, y: 18.97, z: -10}
-  m_LocalScale: {x: 4.4805036, y: 4.4805036, z: 4.4805036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 18.8, z: -17.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1388,8 +1389,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 2052345903}
   - {fileID: 209975987}
   - {fileID: 1817374928}
   - {fileID: 273670219}
+  - {fileID: 519420032}
