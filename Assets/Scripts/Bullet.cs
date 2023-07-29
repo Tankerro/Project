@@ -12,18 +12,28 @@ public class Bullet : MonoBehaviour
         PlayerRotation = GameObject.Find("Pupsik").GetComponent<Player_controller>();
         if (PlayerRotation.faceOnRight == true)
         {
-            BulletSpeed = 10f;
+            BulletSpeed = 150f;
         }
 
         else if (PlayerRotation.faceOnRight == false)
         {
-            BulletSpeed = -10f;
+            BulletSpeed = -150f;
         }
     }
 
-
     void Update()
     {      
-        rb.AddForce(new Vector2(BulletSpeed, 0f), ForceMode2D.Impulse);
+        rb.velocity = new Vector2(BulletSpeed, rb.velocity.y);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage();
+            Destroy(gameObject);
+        }
+
+        Destroy(gameObject);
     }
 }
