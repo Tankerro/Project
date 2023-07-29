@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackG
+    uniqueID: 2673451039
+    locked: 0
+  - name: PLayer
+    uniqueID: 2597558429
+    locked: 0
+  - name: FrontG
+    uniqueID: 1730550859
+    locked: 0

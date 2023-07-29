@@ -23,7 +23,7 @@ public class Player_controller : MonoBehaviour
     void Update()
     {
 
-        //считывание нажатий 
+        //считывание нажатий !
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         // двежение 
