@@ -73,6 +73,6 @@ public class Player_controller : MonoBehaviour
     // стрельба
     public void Shoot()
     {
-        Instantiate(Bullet, BulletSpawner.transform.position, transform.rotation);
+        Destroy(Instantiate(Bullet, BulletSpawner.transform.position, transform.rotation), 5);
     }
 }
