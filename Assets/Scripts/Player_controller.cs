@@ -13,7 +13,7 @@ public class Player_controller : MonoBehaviour
     public bool faceOnRight;
     public GameObject Bullet;
     public GameObject BulletSpawner;
-    public GameObject Camera;
+
 
     void Start()
     {
