@@ -13,17 +13,21 @@ public class Player_controller : MonoBehaviour
     public bool faceOnRight;
     public GameObject Bullet;
     public GameObject BulletSpawner;
-
-
+    public float range = 5f; 
+    public ParticleSystem ShootPartical;
+    public int HP = 5;
+    public Animator animator;
+    public GameObject RestartMenu;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     void Update()
     {
 
-        //считывание нажатий !
+        //считывание нажатий
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         // двежение 
@@ -58,12 +62,9 @@ public class Player_controller : MonoBehaviour
             Shoot();
         }
 
+        //gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
     }
 
-    void FixedUpdate()
-    {
-
-    }
     // считывает приземления 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -74,5 +75,26 @@ public class Player_controller : MonoBehaviour
     public void Shoot()
     {
         Destroy(Instantiate(Bullet, BulletSpawner.transform.position, transform.rotation), 5);
+        // if(faceOnRight == true)
+        // {
+        //     Instantiate(ShootPartical, BulletSpawner.transform.position, Quaternion.Euler(0, 90, -90));
+        // }
+        // else if(faceOnRight == false)
+        // {
+        //     Instantiate(ShootPartical, BulletSpawner.transform.position, Quaternion.Euler(270, 90, -90));
+        // }
+
+    }
+
+    public void TakeDamage()
+    {
+        HP -= 1;
+        //gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f);
+        animator.Play("TakeDamageAnim");
+        if(HP <= 0)
+        {
+            RestartMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }

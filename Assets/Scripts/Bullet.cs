@@ -5,35 +5,60 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
-    private float BulletSpeed;
+    private float BulletSpeed = 20f;
     public Player_controller PlayerRotation;
+    public float distance = 0f;
+    public LayerMask WhatIsSolid;
+    public Vector3 direction;
     void Start()
     {
-        PlayerRotation = GameObject.Find("Pupsik").GetComponent<Player_controller>();
-        if (PlayerRotation.faceOnRight == true)
+
+        PlayerRotation = GameObject.Find("Player").GetComponent<Player_controller>();
+        // if (PlayerRotation.faceOnRight == true)
+        // {
+        //     BulletSpeed = 20f;
+        // }
+
+        // else if (PlayerRotation.faceOnRight == false)
+        // {
+        //     BulletSpeed = -20f;
+        // }
+
+        if(PlayerRotation.faceOnRight == true)
         {
-            BulletSpeed = 150f;
+            direction = Vector3.right;
+
         }
 
-        else if (PlayerRotation.faceOnRight == false)
+        else if(PlayerRotation.faceOnRight == false)
         {
-            BulletSpeed = -150f;
+            direction = Vector3.left * -1f;
         }
     }
 
     void Update()
     {      
-        rb.velocity = new Vector2(BulletSpeed, rb.velocity.y);
-    }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, distance, WhatIsSolid);
+        if(hitInfo.collider != null)
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage();
+            if(hitInfo.collider.CompareTag("Enemy"))
+            {
+                hitInfo.collider.GetComponent<Enemy>().TakeDamage();
+            }
             Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        transform.Translate(direction * Time.deltaTime * BulletSpeed);
     }
+    
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Enemy")
+    //     {
+    //         collision.gameObject.GetComponent<Enemy>().TakeDamage();
+    //         Destroy(gameObject);
+    //     }
+
+    //     Destroy(gameObject);
+    // }
 }
